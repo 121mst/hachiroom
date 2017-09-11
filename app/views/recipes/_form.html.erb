@@ -1,0 +1,22 @@
+<%= form_for(@recipe, url: choose_new_or_edit) do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :knack %>
+    <%= f.text_field :knack %>
+    <br>
+    <%= f.submit %>
+
+<% end %>

@@ -1,0 +1,18 @@
+<h3>以下の内容で、送信する。</h3>
+
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <%= form_for(@recipe) do |f| %>
+      <!-- `f.hidden_field`を使用して、リクエストパラメータに値を設定できるようにしています。 -->
+      <%= f.hidden_field :title %>
+      <%= f.hidden_field :knack %>
+      <!-- @recipe.titleと@recipe.contentとすることで、表示用の値を画面に出力しています。 -->
+      <p>タイトル:<%= @recipe.title %></p>
+      <p>本文:<%= @recipe.knack %></p>
+      <%= f.submit "登録する" %>
+    <% end %>
+    <%= form_for(@recipe, url: new_recipe_path, method: 'get') do |f| %>
+      <%= f.hidden_field :title %>
+      <%= f.hidden_field :knack %>
+      <%= f.submit "もどる", name: 'back' %>
+    <% end %>
