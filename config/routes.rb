@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'notifications/index'
+
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   resources :recipes, only: [:index, :new, :create, :edit, :update ,:destroy] do
     collection do
       post :confirm
@@ -12,6 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:index]
+
+  resources :relationships, only: [:create, :destroy]
+
   root 'top#index'
 
   if Rails.env.development?
@@ -23,6 +33,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
+  resources :recipes do
+    resources :comments
+    post :confirm, on: :collection
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

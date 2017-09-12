@@ -13,7 +13,10 @@
     <% @recipes.each do |recipe| %>
       <tr>
         <td><h4><strong><%= recipe.id %></strong></h4></td>
-        <td><h4><strong><%= recipe.title %></strong></h4></td> <!--タイトル-->
+        <%= link_to recipe_path(recipe) do %>
+          <td><h4><strong><%= recipe.title %></strong></h4></td><!--タイトル-->
+        <% end %>
+        <td><%= link_to '詳細', recipe_path(recipe) %></td>
         <td><h4><strong><%= recipe.knack %></strong></h4></td> <!--コツ-->
         <td><%= profile_img(recipe.user) %></td><!--ユーザ画像-->
         <td><%= link_to 'Show', recipe %></td>

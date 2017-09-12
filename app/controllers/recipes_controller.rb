@@ -6,11 +6,19 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
     @recipes = Recipe.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    #入力フォームと一覧を表示するためインスタンスを2つ生成
+    @comment = @recipe.comments.build
+    @comments = @recipe.comments
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
   end
 
   # GET /recipes/new

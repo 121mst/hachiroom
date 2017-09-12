@@ -1,4 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+<div class="child row">
+  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <div class="recipe-text">
+      <p class="left"><strong>タイトル</strong></p>
+      <p class="left"><%= @recipe.title %></p>
+      <p class="left"><strong>コツ</strong></p>
+      <p class="left"><%= @recipe.knack %></p>
+      <p class="right">
+        <strong>作成時間:</strong>
+        <%= @recipe.created_at.strftime("%y/%m/%d %p %l:%M") %>
+      </p>
+    </div>
+    <p>コメント一覧</p>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, recipe: @recipe } %>
+    </div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, recipe: @recipe } %>
+    <% if current_user.id == @recipe.user_id %>
+      <%= link_to '編集', edit_recipe_path(@recipe) %>
+    <% end %>
+    <%= link_to '戻る', recipes_path %>
+  </div>
+</div>
