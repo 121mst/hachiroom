@@ -15,6 +15,7 @@
         <td><h4><strong><%= recipe.id %></strong></h4></td>
         <td><h4><strong><%= recipe.title %></strong></h4></td> <!--タイトル-->
         <td><h4><strong><%= recipe.knack %></strong></h4></td> <!--コツ-->
+        <td><%= profile_img(recipe.user) %></td><!--ユーザ画像-->
         <td><%= link_to 'Show', recipe %></td>
         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
         <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -7,7 +7,6 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
-
   <div class="field">
     <%= profile_img(@user) if profile_img(@user) %>
     <%= f.file_field :avatar %>
