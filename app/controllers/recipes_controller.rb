@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-
+  #ログインしていないと機能使用不可
+  before_action :authenticate_user!
   # GET /recipes
   # GET /recipes.json
   def index
@@ -29,11 +30,15 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipes_params)
+    #user.idも合わせて登録
+    @recipe.user_id = current_user.id
 
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to recipes_path, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe }
+        #send_mailのメソッドを呼び出す
+        NoticeMailer.sendmail_recipe(@recipe).deliver
       else
         format.html { render :new }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }

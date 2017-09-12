@@ -9,6 +9,8 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
         format.html { redirect_to root_path, notice: 'Contact was successfully created.' }
+        NoticeMailer.sendmail_contact(@contact).deliver
+        NoticeMailer.sendmail_contactadmin(@contact).deliver        
       else
         format.html { render :new }
       end
