@@ -2,10 +2,6 @@ Rails.application.routes.draw do
 
   get 'notifications/index'
 
-  get 'relationships/create'
-
-  get 'relationships/destroy'
-
   resources :recipes, only: [:index, :new, :create, :edit, :update ,:destroy] do
     collection do
       post :confirm
@@ -21,6 +17,8 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
 
   resources :relationships, only: [:create, :destroy]
+
+  resources :genres, only: [:index, :new, :create ,:destroy]
 
   root 'top#index'
 

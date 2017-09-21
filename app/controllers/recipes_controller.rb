@@ -91,7 +91,7 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipes_params
-      params.require(:recipe).permit(:title, :knack)
+      params.require(:recipe).permit(:title, :knack, :comment, :genre, :recipe_image, :recipe_image_cache, :remove_recipe_image, :material_01, :material_02, :material_03, :material_04, :material_05, :material_06, :material_07, :material_08, :material_09, :material_10, :material_11, :material_12, :material_13, :material_14, :material_15, :material_16, :material_17, :material_18, :material_19, :material_20, :process_image_01, :process_image_01_cache, :remove_process_image_01, :process_image_02, :process_image_02_cache, :remove_process_image_02, :process_image_03, :process_image_03_cache, :remove_process_image_03, :process_image_04, :process_image_04_cache, :remove_process_image_04, :process_image_05, :process_image_05_cache, :remove_process_image_05, :process_image_06, :process_image_06_cache, :remove_process_image_06, :process_image_07, :process_image_07_cache, :remove_process_image_07, :process_image_08, :process_image_08_cache, :remove_process_image_08, :process_image_09, :process_image_09_cache, :remove_process_image_09, :process_image_10, :process_image_10_cache, :remove_process_image_10, :process_image_11, :process_image_11_cache, :remove_process_image_11, :process_image_12, :process_image_12_cache, :remove_process_image_12, :process_01, :process_02, :process_03, :process_04, :process_05, :process_06, :process_07, :process_08, :process_09, :process_10, :process_11, :process_12 )
     end
 
 end

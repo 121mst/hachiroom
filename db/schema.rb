@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912115023) do
+ActiveRecord::Schema.define(version: 20170914152129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20170912115023) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.boolean  "read",       default: false
     t.integer  "user_id"
@@ -47,8 +53,8 @@ ActiveRecord::Schema.define(version: 20170912115023) do
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "recipes", force: :cascade do |t|
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "title"
     t.string   "knack"
     t.integer  "user_id"
@@ -56,6 +62,53 @@ ActiveRecord::Schema.define(version: 20170912115023) do
     t.string   "period"
     t.integer  "good_count"
     t.string   "recipe_image"
+    t.string   "comment"
+    t.integer  "genre_id"
+    t.string   "genre"
+    t.string   "material_01"
+    t.string   "material_02"
+    t.string   "material_03"
+    t.string   "material_04"
+    t.string   "material_05"
+    t.string   "material_06"
+    t.string   "material_07"
+    t.string   "material_08"
+    t.string   "material_09"
+    t.string   "material_10"
+    t.string   "material_11"
+    t.string   "material_12"
+    t.string   "material_13"
+    t.string   "material_14"
+    t.string   "material_15"
+    t.string   "material_16"
+    t.string   "material_17"
+    t.string   "material_18"
+    t.string   "material_19"
+    t.string   "material_20"
+    t.text     "process_01"
+    t.text     "process_02"
+    t.text     "process_03"
+    t.text     "process_04"
+    t.text     "process_05"
+    t.text     "process_06"
+    t.text     "process_07"
+    t.text     "process_08"
+    t.text     "process_09"
+    t.text     "process_10"
+    t.text     "process_11"
+    t.text     "process_12"
+    t.string   "process_image_01"
+    t.string   "process_image_02"
+    t.string   "process_image_03"
+    t.string   "process_image_04"
+    t.string   "process_image_05"
+    t.string   "process_image_06"
+    t.string   "process_image_07"
+    t.string   "process_image_08"
+    t.string   "process_image_09"
+    t.string   "process_image_10"
+    t.string   "process_image_11"
+    t.string   "process_image_12"
   end
 
   create_table "relationships", force: :cascade do |t|

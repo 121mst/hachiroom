@@ -1,4 +1,4 @@
-<%= form_for(@recipe, url: choose_new_or_edit) do |f| %>
+<%= form_for(@recipe) do |f| %>
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
@@ -11,12 +11,386 @@
     </div>
   <% end %>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :knack %>
-    <%= f.text_field :knack %>
-    <br>
-    <%= f.submit %>
+  <div class="wrapper clearfix">
+      <!--左側-->
+      <div class="left_menu">
+        <!--タイトル-->
+        <div class="text-title_form">
+          <%= f.label "タイトル" %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <!--レシピ画像-->
+        <div class="recipe_image_form">
+          <div class="field">
+            <%= f.label :DIY完成図 %><br>
+            <%= f.file_field :recipe_image %>
+            <%= f.hidden_field :recipe_image_cache %>
+            <% if @recipe.recipe_image? %>
+              <div class="thumbnail">
+                <%= image_tag @recipe.recipe_image.url %>
+              </div>
+            <% end %><br>
+          </div>
+          <div class="field">
+            <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+            <% if @recipe.persisted? && @recipe.recipe_image? %>
+              <label>
+                <%= f.check_box :remove_recipe_image %>
+                画像を削除
+              </label>
+            <% end %>
+          </div>
+        </div>
 
+        </p>
+      </div>
+
+      <div class="right_menu">
+            <!--ジャンル-->
+            <div class="text-genre_form">
+              <%= f.label "DIYのジャンル" %><br>
+              <%= f.select :genre, [["選択してください", ""], ["リビング", "リビング"], ["寝室", "寝室"], ["お風呂・トイレ", "お風呂・トイレ"], ["庭・玄関", "庭・玄関"], ["クローゼット", "クローゼット"], ["その他", "その他"]] ,class:"form-control" %>
+            </div>
+            <!--コメント-->
+            <div class="text-comment_form">
+              <%= f.label "コメント" %>
+              <%= f.text_field :comment, class: 'form-control', placeholder: "例：材料も少なく低コストで壁をかっこよくできます" %>
+            </div>
+            <!--材料-->
+            <div class="text-material_form">
+              <%= f.label "材料" %>
+              <%= f.text_field :material_01, class: 'form-control', placeholder: "例：木材(20×40×200)×4本" %>
+              <%= f.text_field :material_02, class: 'form-control' %>
+              <%= f.text_field :material_03, class: 'form-control' %>
+              <%= f.text_field :material_04, class: 'form-control' %>
+              <%= f.text_field :material_05, class: 'form-control' %>
+              <%= f.text_field :material_06, class: 'form-control' %>
+              <%= f.text_field :material_07, class: 'form-control' %>
+              <%= f.text_field :material_08, class: 'form-control' %>
+              <%= f.text_field :material_09, class: 'form-control' %>
+              <%= f.text_field :material_10, class: 'form-control' %>
+              <%= f.text_field :material_11, class: 'form-control' %>
+              <%= f.text_field :material_12, class: 'form-control' %>
+              <%= f.text_field :material_13, class: 'form-control' %>
+              <%= f.text_field :material_14, class: 'form-control' %>
+              <%= f.text_field :material_15, class: 'form-control' %>
+              <%= f.text_field :material_16, class: 'form-control' %>
+              <%= f.text_field :material_17, class: 'form-control' %>
+              <%= f.text_field :material_18, class: 'form-control' %>
+              <%= f.text_field :material_19, class: 'form-control' %>
+              <%= f.text_field :material_20, class: 'form-control' %>
+
+            </div>
+      </div>
+</div>
+
+<div class="wrapper clearfix">
+<!--プロセス01-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス01 %><br>
+    <%= f.file_field :process_image_01 %>
+    <%= f.hidden_field :process_image_01_cache %>
+    <% if @recipe.process_image_01? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_01.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_01? %>
+      <label>
+        <%= f.check_box :remove_process_image_01 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_01, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+</div>
+
+<!--プロセス02-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス02 %><br>
+    <%= f.file_field :process_image_02 %>
+    <%= f.hidden_field :process_image_02_cache %>
+    <% if @recipe.process_image_02? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_02.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_02? %>
+      <label>
+        <%= f.check_box :remove_process_image_02 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_02, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス03-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス03 %><br>
+    <%= f.file_field :process_image_03 %>
+    <%= f.hidden_field :process_image_03_cache %>
+    <% if @recipe.process_image_03? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_03.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_03? %>
+      <label>
+        <%= f.check_box :remove_process_image_03 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_03, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス04-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス04 %><br>
+    <%= f.file_field :process_image_04 %>
+    <%= f.hidden_field :process_image_04_cache %>
+    <% if @recipe.process_image_04? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_04.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_04? %>
+      <label>
+        <%= f.check_box :remove_process_image_04 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_04, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス05-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス05 %><br>
+    <%= f.file_field :process_image_05 %>
+    <%= f.hidden_field :process_image_05_cache %>
+    <% if @recipe.process_image_05? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_05.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_05? %>
+      <label>
+        <%= f.check_box :remove_process_image_05 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_05, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス06-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス06 %><br>
+    <%= f.file_field :process_image_06 %>
+    <%= f.hidden_field :process_image_06_cache %>
+    <% if @recipe.process_image_06? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_06.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_06? %>
+      <label>
+        <%= f.check_box :remove_process_image_06 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_06, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス07-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス07 %><br>
+    <%= f.file_field :process_image_07 %>
+    <%= f.hidden_field :process_image_07_cache %>
+    <% if @recipe.process_image_07? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_07.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_07? %>
+      <label>
+        <%= f.check_box :remove_process_image_07 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_07, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス08-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス08 %><br>
+    <%= f.file_field :process_image_08 %>
+    <%= f.hidden_field :process_image_08_cache %>
+    <% if @recipe.process_image_08? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_08.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_08? %>
+      <label>
+        <%= f.check_box :remove_process_image_08 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_08, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス09-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス09 %><br>
+    <%= f.file_field :process_image_09 %>
+    <%= f.hidden_field :process_image_09_cache %>
+    <% if @recipe.process_image_09? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_09.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_09? %>
+      <label>
+        <%= f.check_box :remove_process_image_09 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_09, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス10-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス10 %><br>
+    <%= f.file_field :process_image_10 %>
+    <%= f.hidden_field :process_image_10_cache %>
+    <% if @recipe.process_image_10? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_10.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_10? %>
+      <label>
+        <%= f.check_box :remove_process_image_10 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_10, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+<!--プロセス11-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス11 %><br>
+    <%= f.file_field :process_image_11 %>
+    <%= f.hidden_field :process_image_11_cache %>
+    <% if @recipe.process_image_11? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_11.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_11? %>
+      <label>
+        <%= f.check_box :remove_process_image_11 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_11, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+
+<!--プロセス12-->
+<div class="new_process_form">
+  <div class="field">
+    <%= f.label :プロセス12 %><br>
+    <%= f.file_field :process_image_12 %>
+    <%= f.hidden_field :process_image_12_cache %>
+    <% if @recipe.process_image_12? %>
+      <div class="thumbnail">
+        <%= image_tag @recipe.process_image_12.url %>
+      </div>
+    <% end %><br>
+  </div>
+  <div class="field_form">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @recipe.persisted? && @recipe.process_image_12? %>
+      <label>
+        <%= f.check_box :remove_process_image_12 %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
+  <%= f.label :コメント %><br>
+  <%= f.text_field :process_12, class: 'form-control', placeholder: "例：木の両端にネジ穴を開けます" %>
+　</div>
+
+  <div class="knack_form">
+    <%= f.label "コツ" %>
+    <%= f.text_field :knack, class: 'form-control' %>
+  </div>
+    <br>
+    <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
 <% end %>
+</div>

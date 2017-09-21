@@ -6,14 +6,25 @@
       <!-- `f.hidden_field`を使用して、リクエストパラメータに値を設定できるようにしています。 -->
       <%= f.hidden_field :title %>
       <%= f.hidden_field :knack %>
+      <%= f.hidden_field :recipe_image %>
       <!-- @recipe.titleと@recipe.contentとすることで、表示用の値を画面に出力しています。 -->
       <p>タイトル:<%= @recipe.title %></p>
       <p>本文:<%= @recipe.knack %></p>
+      <!-- 投稿画像 追加箇所 開始 -->
+      <p>
+        <% if recipe.recipe_image? %>
+          <div class="thumbnail">
+            <%= image_tag recipe.recipe_image %>
+          </div>
+        <% end %>
+      </p>
+      <!-- 投稿画像 追加箇所 終了 -->
       <%= f.submit "登録する" %>
     <% end %>
     <%= form_for(@recipe, url: new_recipe_path, method: 'get') do |f| %>
       <%= f.hidden_field :title %>
       <%= f.hidden_field :knack %>
+      <%= f.hidden_field :recipe_image %>
       <%= f.submit "もどる", name: 'back' %>
     <% end %>
 </div>
