@@ -23,6 +23,8 @@
         <%= profile_img(@recipe.user) %><!--ユーザ画像-->
         <% if current_user.id == @recipe.user_id %>
 　        <%= link_to "編集", edit_recipe_path(@recipe), class: 'square_btn btn-default btn-sm btn-success' %>
+          <%= link_to "削除", recipe_path(@recipe.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'square_btn btn-default btn-sm btn-success' %>
+
         <% end %>
 　        <%= link_to "一覧", recipes_path, class: 'square_btn btn-default btn-sm btn-success' %>
   　    </div>
