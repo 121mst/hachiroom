@@ -11,7 +11,8 @@
     </div>
     <!--レシピ画像-->
     <p class="recipe_image">
-        <img src="<%= @recipe.recipe_image %>">
+        <img src="<%= @recipe.recipe_image %>" onError=this.src="<%= asset_path "no_image.png" %>">
+
     </p>
   </div>
 
