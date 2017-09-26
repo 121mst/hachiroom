@@ -1,3 +1,19 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user_one{
+  background-color: #fce4d6;
+  margin: 10px;
+  padding: 10px;
+  background-image: image_url("kami2.jpg");
+  border: 3px #b4aeb1 solid;
+  //影をつける
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+
+}
+
+.pro_img{
+  margin: 10px;
+  padding: 10px;
+}

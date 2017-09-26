@@ -1,9 +1,11 @@
 <div class="container">
   <h2>ユーザー</h2>
   <% @users.each do |user| %>
-      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
-        <%= profile_img(user) %>
-        <%= user.email %>
+        <div class="user_one col-md-3 col-sm-3 col-xs-3 ">
+          <div class="pro_img">
+          <%= profile_img(user) %>
+          <%= user.name %>
+          </div>
         <%= render 'follow_form', user: user %>
       </div>
   <% end %>

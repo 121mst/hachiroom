@@ -4,6 +4,10 @@
     background-image: image_url("koruku.jpg");
 }
 
+#container_index ul{
+     margin-bottom: 0px;
+}
+
 .show_p {
   background-color: #f8f4e6;
 }
@@ -83,6 +87,7 @@ float: right;
 height: 10%;
 }
 /*材料*/
+/*
 .text-material {
 background-image: image_url("kami2.jpg");
 //background-color: #f7f6f5;
@@ -94,7 +99,21 @@ margin-bottom: 10px;
 border: 3px #b4aeb1 solid;
 //影をつける
 box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+*/
 
+.text-material{
+padding: 10px;
+font-size: 2em;
+color: #000;
+font-weight: bold;
+height: 50%;
+margin-top: 20px;
+margin-bottom: 10px;
+background-image: image_url("kami2.jpg");
+//background-color: #f5f5f5;
+border-style: solid;
+border-color: #c9c9c2;
 }
 
 
@@ -263,7 +282,6 @@ border: outset 4px #9fa09e;
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
-    color: #ffa07a;
     border: groove 2px #a9a9a9;
     background: #ffffff;
     border-radius: 1px;
@@ -273,7 +291,6 @@ border: outset 4px #9fa09e;
 .square_btn:hover {
     background: #ffe4b5;
     border: groove 4px #a9a9a9;
-    color: #999;
 }
 
 

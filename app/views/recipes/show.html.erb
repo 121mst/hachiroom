@@ -22,11 +22,10 @@
         <div class="img-pro">
         <%= profile_img(@recipe.user) %><!--ユーザ画像-->
         <% if current_user.id == @recipe.user_id %>
-　        <%= link_to "編集", edit_recipe_path(@recipe), class: 'square_btn btn-default btn-sm btn-success' %>
-          <%= link_to "削除", recipe_path(@recipe.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'square_btn btn-default btn-sm btn-success' %>
-
+　        <%= link_to "編集", edit_recipe_path(@recipe), class: 'square_btn btn-default btn-sm' %>
+          <%= link_to "削除", recipe_path(@recipe.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'square_btn btn-default btn-sm' %>
         <% end %>
-　        <%= link_to "一覧", recipes_path, class: 'square_btn btn-default btn-sm btn-success' %>
+　        <%= link_to "一覧", recipes_path, class: 'square_btn btn-default btn-sm' %>
   　    </div>
         <!--ジャンル-->
         <div class="text-genre">
@@ -34,7 +33,7 @@
         </div>
         <!--コメント-->
         <div class="text-comment">
-          コメント：<%= @recipe.comment %>
+          <%= @recipe.comment %>
         </div>
         <!--材料-->
         <div class="text-material">
@@ -59,9 +58,9 @@
           <p><%= @recipe.material_10 %></p>
           <hr width=80% size="1" color="#7d7d7d" style="border-style:dotted">
           <p><%= @recipe.material_11 %><br>
-            <hr width=80% size="1" color="#7d7d7d" style="border-style:dotted">
+          <hr width=80% size="1" color="#7d7d7d" style="border-style:dotted">
           <p><%= @recipe.material_12 %><br>
-            <hr width=80% size="1" color="#7d7d7d" style="border-style:dotted">
+          <hr width=80% size="1" color="#7d7d7d" style="border-style:dotted">
           <p><%= @recipe.material_13 %></p>
           <hr width=80% size="1" color="#7d7d7d" style="border-style:dotted">
           <p><%= @recipe.material_14 %></p>
@@ -249,7 +248,7 @@
       <img src="<%= asset_path "point.png" %>">
     </div>
     <div class="right_menu_knac">
-      <p>コツ:<%= @recipe.knack %></p>
+      <p><%= @recipe.knack %></p>
     </div>
   </div>
 
