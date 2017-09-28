@@ -4,16 +4,37 @@
 
 .user_one{
   background-color: #fce4d6;
-  margin: 10px;
-  padding: 10px;
+  margin: 5px;
+  padding: 5px;
   background-image: image_url("kami2.jpg");
   border: 3px #b4aeb1 solid;
   //影をつける
   box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+  text-align:center;
 
 }
 
 .pro_img{
-  margin: 10px;
   padding: 10px;
+  text-align:center;
+  height: 150px;
+}
+
+p.profile {
+  text-align:center;
+  position: relative;
+  height: 50px;
+
+  }
+
+p.profile img {
+    width: 50px;  /* 横幅を200pxに */
+    height: 50px;
+    position: absolute;
+    top: 0;
+    bottom: 5;
+    right: 0;
+    left: 0;
+    margin: auto;
+
 }
