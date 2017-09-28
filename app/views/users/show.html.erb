@@ -15,7 +15,7 @@
             <p class="profile">
 　　　          <%= profile_img(user)%>
             </p>
-               <%= user.name %>
+            <%= link_to user.name, user %><br>
           </div>
       </div>
   <% end %>
@@ -31,7 +31,7 @@
     <p class="profile">
 　　　          <%= profile_img(user)%>
     </p>
-       <%= user.name %>
+    <%= link_to user.name, user %><br>
   </div>
 </div>
   <% end %>
