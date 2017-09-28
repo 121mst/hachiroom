@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index]
-
   resources :relationships, only: [:create, :destroy]
 
   resources :genres, only: [:index, :new, :create ,:destroy]
@@ -30,6 +28,8 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+  resources :users, only: [:index, :show]
+
 
   resources :recipes do
     resources :comments

@@ -6,7 +6,7 @@
             <p class="profile">
 　　　          <%= profile_img(user)%>
             </p>
-               <%= user.name %>
+            <%= link_to user.name, user %><br>
                <%= render 'follow_form', user: user %>
           </div>
       </div>

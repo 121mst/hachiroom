@@ -1,0 +1,38 @@
+<div class="col-md-12">
+    <p><strong>名前    : <%= @user.name %></strong></p>
+    <p><strong>E-mail : <%= @user.email %></strong></p>
+    <p><%= profile_img(@user) %></p>
+  </div>
+
+<br style="clear:both;">
+<hr/>
+<p class="center"><strong>フォロー</strong></p>
+<hr/>
+  <% @user.followed_users.each do |user| %>
+        <!--<div class="user_one col-md-3 col-sm-3 col-xs-3 ">-->
+        <div class="user_one col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-1">
+          <div class="pro_img" >
+            <p class="profile">
+　　　          <%= profile_img(user)%>
+            </p>
+               <%= user.name %>
+          </div>
+      </div>
+  <% end %>
+<br style="clear:both;">
+
+<hr/>
+<p class="center"><strong>フォロワー</strong></p>
+<hr/>
+<% @user.followers.each do |user| %>
+<!--<div class="user_one col-md-3 col-sm-3 col-xs-3 ">-->
+<div class="user_one col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-1">
+  <div class="pro_img" >
+    <p class="profile">
+　　　          <%= profile_img(user)%>
+    </p>
+       <%= user.name %>
+  </div>
+</div>
+  <% end %>
+<br style="clear:both;">
